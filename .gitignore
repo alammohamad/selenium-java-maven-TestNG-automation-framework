@@ -1,0 +1,35 @@
+# Maven
+target/
+
+# TestNG / test output
+test-output/
+
+# Allure
+allure-results/
+allure-report/
+.allure/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Maven debug output
+maven-debug.txt
+
+# Generated reports
+reports/
