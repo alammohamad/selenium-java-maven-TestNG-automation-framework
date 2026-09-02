@@ -46,6 +46,12 @@ public class UITest extends BaseTest {
             String password,
             String expectedResult) {
 
+        System.out.println(
+                "===== RUNNING LOGIN TEST | Browser: "
+                + getDriver().getClass().getSimpleName()
+                + " ====="
+        );
+
         LoginPage loginPage =
                 new LoginPage(getDriver());
 
