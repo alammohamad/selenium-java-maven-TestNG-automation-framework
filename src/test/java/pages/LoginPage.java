@@ -116,6 +116,33 @@ public class LoginPage {
 
         } catch (Exception e) {
 
+            System.out.println("===== LOGIN SUCCESS CHECK FAILED =====");
+            System.out.println("Current URL: " + driver.getCurrentUrl());
+            System.out.println("Page Title: " + driver.getTitle());
+
+            try {
+                System.out.println(
+                        "Dashboard elements found: "
+                        + driver.findElements(dashboard).size()
+                );
+            } catch (Exception ex) {
+                System.out.println(
+                        "Could not check Dashboard element: "
+                        + ex.getMessage()
+                );
+            }
+
+            System.out.println(
+                    "Exception: "
+                    + e.getClass().getSimpleName()
+            );
+            System.out.println(
+                    "Exception Message: "
+                    + e.getMessage()
+            );
+
+            System.out.println("======================================");
+
             return false;
         }
     }
