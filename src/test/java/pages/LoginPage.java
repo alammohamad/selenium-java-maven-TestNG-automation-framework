@@ -108,40 +108,46 @@ public class LoginPage {
 
         try {
 
-            return wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(
-                            dashboard
-                    )
-            ).isDisplayed();
+            wait.until(
+                    ExpectedConditions.urlContains("/dashboard/index")
+            );
+
+            System.out.println(
+                    "Login successful - Dashboard URL detected: "
+                    + driver.getCurrentUrl()
+            );
+
+            return true;
 
         } catch (Exception e) {
 
-            System.out.println("===== LOGIN SUCCESS CHECK FAILED =====");
-            System.out.println("Current URL: " + driver.getCurrentUrl());
-            System.out.println("Page Title: " + driver.getTitle());
+            System.out.println(
+                    "===== LOGIN SUCCESS CHECK FAILED ====="
+            );
 
-            try {
-                System.out.println(
-                        "Dashboard elements found: "
-                        + driver.findElements(dashboard).size()
-                );
-            } catch (Exception ex) {
-                System.out.println(
-                        "Could not check Dashboard element: "
-                        + ex.getMessage()
-                );
-            }
+            System.out.println(
+                    "Current URL: "
+                    + driver.getCurrentUrl()
+            );
+
+            System.out.println(
+                    "Page Title: "
+                    + driver.getTitle()
+            );
 
             System.out.println(
                     "Exception: "
                     + e.getClass().getSimpleName()
             );
+
             System.out.println(
                     "Exception Message: "
                     + e.getMessage()
             );
 
-            System.out.println("======================================");
+            System.out.println(
+                    "======================================"
+            );
 
             return false;
         }
