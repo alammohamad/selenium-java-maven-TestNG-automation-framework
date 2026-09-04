@@ -59,6 +59,8 @@ public class WebDriverFactory {
                 WebDriverManager.firefoxdriver().setup();
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addPreference("layers.acceleration.disabled", true);
+                firefoxOptions.addPreference("gfx.webrender.software", true);
 
                 // Diagnostic: force Firefox to use software WebRender
                 firefoxOptions.addPreference("gfx.webrender.software", true);
