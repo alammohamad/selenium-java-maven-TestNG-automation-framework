@@ -7,8 +7,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.io.File;
+import org.openqa.selenium.firefox.GeckoDriverService;
 
 public class WebDriverFactory {
 
@@ -68,7 +69,11 @@ public class WebDriverFactory {
                 System.out.println("Geckodriver: "
                         + System.getProperty("webdriver.gecko.driver"));
 
-                return new FirefoxDriver(firefoxOptions);
+                GeckoDriverService service = new GeckoDriverService.Builder()
+                        .withLogFile(new File("firefox-geckodriver.log"))
+                        .build();
+
+                return new FirefoxDriver(service, firefoxOptions);
                 
 //            case "edge":
 //
