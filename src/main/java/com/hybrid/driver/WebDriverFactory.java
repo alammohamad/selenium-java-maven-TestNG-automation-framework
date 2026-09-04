@@ -52,11 +52,15 @@ public class WebDriverFactory {
 //
 //                return new FirefoxDriver(firefoxOptions);
 
+                
             case "firefox":
 
                 WebDriverManager.firefoxdriver().setup();
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+
+                // Diagnostic: force Firefox to use software WebRender
+                firefoxOptions.addPreference("gfx.webrender.software", true);
 
                 if ("true".equalsIgnoreCase(
                         System.getenv("GITHUB_ACTIONS"))) {
@@ -74,7 +78,7 @@ public class WebDriverFactory {
                         .build();
 
                 return new FirefoxDriver(service, firefoxOptions);
-                
+            
 //            case "edge":
 //
 //                WebDriverManager.edgedriver().setup();
