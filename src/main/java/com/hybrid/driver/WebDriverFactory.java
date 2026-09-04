@@ -37,6 +37,20 @@ public class WebDriverFactory {
                 return new ChromeDriver(chromeOptions);
 
 
+//            case "firefox":
+//
+//                WebDriverManager.firefoxdriver().setup();
+//
+//                FirefoxOptions firefoxOptions = new FirefoxOptions();
+//
+//                if ("true".equalsIgnoreCase(
+//                        System.getenv("GITHUB_ACTIONS"))) {
+//
+//                    firefoxOptions.addArguments("-headless");
+//                }
+//
+//                return new FirefoxDriver(firefoxOptions);
+
             case "firefox":
 
                 WebDriverManager.firefoxdriver().setup();
@@ -49,9 +63,13 @@ public class WebDriverFactory {
                     firefoxOptions.addArguments("-headless");
                 }
 
+                System.out.println("===== FIREFOX DIAGNOSTIC =====");
+                System.out.println("Firefox binary: C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+                System.out.println("Geckodriver: "
+                        + System.getProperty("webdriver.gecko.driver"));
+
                 return new FirefoxDriver(firefoxOptions);
-
-
+                
 //            case "edge":
 //
 //                WebDriverManager.edgedriver().setup();
