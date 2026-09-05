@@ -1,5 +1,4 @@
 package com.hybrid.driver;
-//Jenkins Poll SCM test
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,9 +7,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.io.File;
-import org.openqa.selenium.firefox.GeckoDriverService;
 
 public class WebDriverFactory {
 
@@ -39,31 +37,11 @@ public class WebDriverFactory {
                 return new ChromeDriver(chromeOptions);
 
 
-//            case "firefox":
-//
-//                WebDriverManager.firefoxdriver().setup();
-//
-//                FirefoxOptions firefoxOptions = new FirefoxOptions();
-//
-//                if ("true".equalsIgnoreCase(
-//                        System.getenv("GITHUB_ACTIONS"))) {
-//
-//                    firefoxOptions.addArguments("-headless");
-//                }
-//
-//                return new FirefoxDriver(firefoxOptions);
-
-                
             case "firefox":
 
                 WebDriverManager.firefoxdriver().setup();
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addPreference("layers.acceleration.disabled", true);
-                firefoxOptions.addPreference("gfx.webrender.software", true);
-
-                // Diagnostic: force Firefox to use software WebRender
-                firefoxOptions.addPreference("gfx.webrender.software", true);
 
                 if ("true".equalsIgnoreCase(
                         System.getenv("GITHUB_ACTIONS"))) {
@@ -71,17 +49,9 @@ public class WebDriverFactory {
                     firefoxOptions.addArguments("-headless");
                 }
 
-                System.out.println("===== FIREFOX DIAGNOSTIC =====");
-                System.out.println("Firefox binary: C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-                System.out.println("Geckodriver: "
-                        + System.getProperty("webdriver.gecko.driver"));
+                return new FirefoxDriver(firefoxOptions);
 
-                GeckoDriverService service = new GeckoDriverService.Builder()
-                        .withLogFile(new File("firefox-geckodriver.log"))
-                        .build();
 
-                return new FirefoxDriver(service, firefoxOptions);
-            
 //            case "edge":
 //
 //                WebDriverManager.edgedriver().setup();
